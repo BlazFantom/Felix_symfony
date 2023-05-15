@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block servList %}
+    <link rel="stylesheet" href="/assets/css/appointment.css">
+    <section class="main-map    ">
+        <div class="container">
+            <h1 class="congrats">Вы были успешно записаны <br>
+                Доктор: {{ doctor }} <br>
+                Услуга: {{ servise }} <br>
+            </h1>
+        </div>
+    </section>
+
+{% endblock %}

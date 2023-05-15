@@ -1,9 +1,0 @@
-{% extends "main.html.twig" %}
-{% block title %}
-    {{ parent() }}
-    {% set counter = '0' %}
-    {% for a in arr %}
-        {% set counter = counter+1 %}
-        <h1>{{ counter }} rand num is:{{ a }}</h1>
-    {% endfor %}
-{% endblock %}

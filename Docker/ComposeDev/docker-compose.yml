@@ -30,6 +30,7 @@ services:
     environment:
       POSTGRES_DB: "test"
       POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
       POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - 54320:5432

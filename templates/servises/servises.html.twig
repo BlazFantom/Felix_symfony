@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block servList %}
+
+    <section class="servises">
+        <div class="container">
+            <h1 class="servises-title">Услуги и цены</h1>
+            <div class="servises-wrap-boxes">
+
+
+                {% for servise in servises %}
+                    <div class="wrap-box">
+                        <div class="">
+                            <div class="box-block">
+                                <img src="/assets/img/icons/ortop.png" alt="" class="box-img ">
+
+                            </div>
+                            <div class="box-text">{{ servise.name }}
+                            </div>
+
+                        </div>
+                        <div class="box-prise">{{ servise.price }}</div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
