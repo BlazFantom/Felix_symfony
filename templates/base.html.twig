@@ -5,29 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ encore_entry_link_tags('app') }}
+    <title>{% block title %}{% endblock %}</title>
 
-    <title>Наша команда</title>
+    {{ encore_entry_link_tags('app') }}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {% endblock %}
+
 </head>
 
 <body>
-<script>
-    const $drowdownArrow = document.querySelector('.fa-angle-down');
-    const $checkbox = document.getElementById('openDropdown');
-    const $dropdownMenu = document.querySelector('.dropdown-menu');
+{# <script> #}
+{#    const $drowdownArrow = document.querySelector('.fa-angle-down'); #}
+{#    const $checkbox = document.getElementById('openDropdown'); #}
+{#    const $dropdownMenu = document.querySelector('.dropdown-menu'); #}
 
-    $checkbox.addEventListener('change', () => {
-        $drowdownArrow.classList.toggle('rotate-dropdown-arrow');
-    });
+{#    $checkbox.addEventListener('change', () => { #}
+{#        $drowdownArrow.classList.toggle('rotate-dropdown-arrow'); #}
+{#    }); #}
 
-    $dropdownMenu.addEventListener('click', (e) => {
-        $checkbox.checked = false;
-        // setting checked to false won't trigger 'change'
-        // event, manually dispatch an event to rotate
-        // dropdown arrow icon
-        $checkbox.dispatchEvent(new Event('change'));
-    });
-</script>
+{#    $dropdownMenu.addEventListener('click', (e) => { #}
+{#        $checkbox.checked = false; #}
+{#        // setting checked to false won't trigger 'change' #}
+{#        // event, manually dispatch an event to rotate #}
+{#        // dropdown arrow icon #}
+{#        $checkbox.dispatchEvent(new Event('change')); #}
+{#    }); #}
+{# </script> #}
 
 <header class="header">
     <div class="container">
@@ -50,9 +56,14 @@
                             <div class="dropdown-menu">
                                 <span>bla bla</span>
                                 <span>bla bla</span>
-                                {% if is_granted('ROLE_ADMIN') %}<span>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <span>
                                     <a class="dropdown-item" href="{{ path('admin') }}">Admin panel</a>
-                                    </span>{% endif %}
+                                    </span>
+                                    <span>
+                                    <a class="dropdown-item" href="{{ path('statistics') }}">Statistics</a>
+                                    </span>
+                                {% endif %}
                                 <span><a class=""
                                          href="{{ path('logout') }}">Выйти</a></span>
                             </div>

@@ -1,0 +1,87 @@
+
+.main-map {
+    width: 100%;
+    min-height: 483px;
+    background: #76c3eb;
+    padding-bottom: 50px;
+}
+
+.congrats {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+.map-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    column-gap: 30px;
+}
+
+.mw-label {
+    color: white;
+    padding-bottom: 15px;
+}
+
+.mw-block-info-span {
+    flex: 1 0 0;
+    padding-top: 90px;
+    max-width: 450px;
+    min-width: 300px;
+
+}
+
+#appointment_form_Doctor {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100px;
+}
+
+.map-info {
+    margin-top: 10px;
+    padding-left: 10px;
+    color: white;
+    width: 100%;
+    height: 25px;
+    margin-bottom: 32px;
+    border-bottom: solid 3px white;
+    background-color: #76c3eb;
+}
+
+.map-info::placeholder {
+    color: white;
+    width: 100%;
+}
+
+.mw-checkbox {
+    cursor: pointer;
+}
+
+.map-info[type="checkbox"] {
+    height: 100px;
+}
+
+.mw-checkbox-text {
+    color: white;
+    padding-left: 10px;
+    font-size: 20px;
+
+}
+
+
+.mw-map {
+    margin: 40px 0;
+    width: 400px;
+    height: 400px;
+}
+
+.mw-button {
+    width: 80%;
+    margin: 40px 10%;
+    height: 65px;
+    border: solid 2px white;
+    color: white;
+    font-size: 26px;
+
+}

@@ -1,0 +1,73 @@
+{% block tableDaysData %}
+
+
+    <table class="tableStat tableData on">
+        <thead>
+        <tr>
+            <th colspan="{{ 12+1 }}">Таблица статистики записей</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>врачи</td>
+            {% for i in 1..12 %}
+                <td>{{ i|numToDate() }}</td>
+            {% endfor %}
+        </tr>
+
+        {% for doctor in doctors %}
+            <tr>
+                <td>{{ doctor.name }}</td>
+                {% for i in 1..12 %}
+                    <td>
+                        {% set count = 0 %}
+                        {% for appointments in doctor.appointments %}
+                            {% if appointments.date|date("n") == i %}
+                                {% set count = count + 1 %}
+                            {% endif %}
+
+                        {% endfor %}
+                        {{ count }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="tableStat tableData off" id="daysTable">
+
+        <thead>
+        <tr>
+            <th colspan="{{ 'now'|date('n')|daysInMonth()+1 }}">Таблица статистики записей в текущем месяце</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>врачи</td>
+            {% for i in 1..'now'|date("n")|daysInMonth() %}
+                <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+
+        {% for doctor in doctors %}
+            <tr class="tableRowData">
+                <td>{{ doctor.name }}</td>
+                {% for i in 1..'now'|date("n")|daysInMonth() %}
+                    <td class="tableCellData">
+                        {% set count = 0 %}
+                        {% for appointments in doctor.appointments %}
+                            {% if appointments.date|date("j") == i and appointments.date|date("m")=='now'|date("m") %}
+                                {% set count = count + 1 %}
+                            {% endif %}
+                        {% endfor %}{{ count }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

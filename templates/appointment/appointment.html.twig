@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block servList %}
+
+    <section class="main-map">
+        <div class="container">
+            <div class="map-wrapper">
+                <div class="mw-block-info-span">
+                    {{ form_start(appointment_form) }}
+
+                    <div>
+                        {{ form_label(appointment_form.doctors, null, {'label_attr': {'class': 'mw-label'}}) }}
+                    </div>
+                    <div>
+                        {{ form_widget(appointment_form.doctors, {'attr': {'class': 'doctorChoice'}}) }}
+                    </div>
+                    <div>
+                        {{ form_widget(appointment_form.servises, {'attr': {'class': 'map-info'}}) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(appointment_form.date, null, {'label_attr': {'class': 'mw-label'}}) }}
+                    </div>
+                    <div>
+                        {{ form_widget(appointment_form.date, {'attr': {'class': 'map-info'}}) }}
+                    </div>
+                    <button type="submit" class="mw-button">Записаться на приём</button>
+                    {{ form_end(appointment_form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

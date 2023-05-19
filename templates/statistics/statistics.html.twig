@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block servList %}
+
+    <div class="container">
+        <button id="tableAjaxUpdate" class="tableAjaxUpdate"> Обновить</button>
+        <h1>Дни месяцы</h1>
+        <div class="statisticsButtons">
+            <label class="table-switch" id="labelTableSwitch">
+                <input type="checkbox" class="table-checkbox" id="table-checkbox">
+                <span class="table-slider round"></span>
+            </label>
+        </div>
+        <div id="dataUpdated" class="dataUpdated hidden">Данные обновились</div>
+        <div id="TablesInfo" class="TablesInfo">
+            {% block tableDaysData %}
+                {% include 'statistics/ajaxGetAppointment.html.twig' %}
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

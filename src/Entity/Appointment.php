@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AppointmentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,31 +16,74 @@ class Appointment
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Doctor = null;
+    #[ORM\ManyToOne(inversedBy: 'appointments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Servises $servises = null;
+
+    #[ORM\ManyToOne(inversedBy: 'appointments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $client = null;
+
+    #[ORM\ManyToMany(targetEntity: Team::class, inversedBy: 'appointments')]
+    private Collection $doctors;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $client = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $servise = null;
+    public function __construct()
+    {
+        $this->doctors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDoctor(): ?string
+    public function getservises(): ?Servises
     {
-        return $this->Doctor;
+        return $this->servises;
     }
 
-    public function setDoctor(string $Doctor): self
+    public function setservises(?Servises $servises): self
     {
-        $this->Doctor = $Doctor;
+        $this->servises = $servises;
+
+        return $this;
+    }
+
+    public function getClient(): ?User
+    {
+        return $this->client;
+    }
+
+    public function setClient(?User $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Team>
+     */
+    public function getDoctors(): Collection
+    {
+        return $this->doctors;
+    }
+
+    public function addDoctor(Team $doctor): self
+    {
+        if (!$this->doctors->contains($doctor)) {
+            $this->doctors->add($doctor);
+        }
+
+        return $this;
+    }
+
+    public function removeDoctor(Team $doctor): self
+    {
+        $this->doctors->removeElement($doctor);
 
         return $this;
     }
@@ -52,34 +97,6 @@ class Appointment
     {
         $this->date = $date;
 
-        return $this;
-    }
-
-    public function getClient(): ?string
-    {
-        return $this->client;
-    }
-
-    public function setClient(string $client): self
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    public function __toString(): string
-    {
-        return $this->id;
-    }
-
-    public function getServise(): ?string
-    {
-        return $this->servise;
-    }
-
-    public function setServise(string $servise): self
-    {
-        $this->servise = $servise;
         return $this;
     }
 }

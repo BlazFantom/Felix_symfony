@@ -5,8 +5,10 @@
     <section class="main-map    ">
         <div class="container">
             <h1 class="congrats">Вы были успешно записаны <br>
-                Доктор: {{ doctor }} <br>
-                Услуга: {{ servise }} <br>
+                Доктор: <br> {% for el in appointment.Doctors %}  {{ el.name }} <br>
+                {% endfor %}
+                Услуга: {{ appointment.servises.name }} <br>
+                Дата: {{ appointment.date|date("d-m-Y   ") }} <br>
             </h1>
         </div>
     </section>

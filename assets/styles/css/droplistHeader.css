@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 40px 0 0 0;
+
 }
 
 .dropdown {
@@ -35,12 +35,13 @@
     display: none;
     flex-direction: column;
     border-radius: 4px;
-    margin-top: 210px;
+    margin-top: 250px;
     width: 160px;
     padding: 10px;
     box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.3);
     background: #fafafa;
     transform-origin: top left;
+    z-index: 1;
 }
 
 .dropdown-menu span {

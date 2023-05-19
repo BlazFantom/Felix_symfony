@@ -1,0 +1,112 @@
+@media (max-width: 1100px) {
+    .nav-list {
+        display: none;
+    }
+
+    .nav-button {
+        display: block;
+    }
+
+    .nav.open .nav-list {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 1;
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        grid-row-gap: 40px;
+    }
+
+    .nav-list {
+        color: black;
+        font-size: 24px;
+    }
+
+    .nav-list a:active {
+        color: black
+    }
+
+
+    .nav-button {
+        position: absolute;
+        z-index: 1;
+        top: 30px;
+        right: 30px;
+    }
+
+    .phone-num-header {
+        padding-left: 0;
+    }
+
+
+}
+
+@media (max-width: 920px) {
+    .item {
+        margin-right: 0;
+    }
+
+    /*
+    .item:first-child {
+        margin-left: 0px;
+    }
+
+    .item:last-child {
+        margin-right: 0px;
+    }
+*/
+
+    .testimonials {
+        max-width: 300px;
+    }
+
+    .item .team-card {
+        min-width: 300px
+    }
+
+    .mif-block img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+}
+
+@media (max-width: 1100px) {
+    .mif-block:nth-child(1) {
+        order: 2;
+    }
+
+    .mif-block:nth-child(2) {
+        order: 1;
+    }
+
+    .mif-block:nth-child(3) {
+        order: 3;
+    }
+
+    .mif-block:nth-child(4) {
+        order: 4;
+    }
+
+
+
+    .mif-block:nth-child(5) {
+        order: 6;
+    }
+
+    .mif-block:nth-child(6) {
+        order: 5
+    }
+
+    .mif-block:nth-child(7) {
+        order: 7;
+    }
+
+    .mif-block:nth-child(8) {
+        order: 8;
+    }
+}

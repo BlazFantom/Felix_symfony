@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{ encore_entry_link_tags('app') }}
+</head>
+<body>
+<div id="content">
+    <div id="container">
+        <div id="title">
+            <h1>Login</h1>
+        </div>
+        <div id="form">
+
+            <form method=post action="{{ path('login') }}">
+
+
+                <div id="form-input">
+                    <label for="email">
+                        Username
+                        <input id="username" type="text" name="_username" value="{{ last_username }}" required/>
+                    </label>
+                    <label for="password">
+                        Password
+                        <input id="password" type="password" name="_password" required/>
+                    </label>
+                    {% if userDnEx %}
+                        <div id="error">Пользователя с таким именем не существует <br></div>
+                    {% elseif error %}
+
+
+                        <div id="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+
+                    {% endif %}
+                </div>
+                <button type="submit">Enter</button>
+            </form>
+        </div>
+        <div id="links">
+            <a href="{{ path('register') }}">Register here!</a>
+            <a href="{{ path('servises') }}">Return to main page</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+

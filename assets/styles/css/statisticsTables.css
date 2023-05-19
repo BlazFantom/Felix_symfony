@@ -1,0 +1,134 @@
+.tableStat {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+}
+
+.tableStat th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+
+.tableStat td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+}
+
+.tableData.tableDays td {
+    /*display: inline-block;*/
+}
+
+.tableData.table Months td {
+    margin: 0;
+}
+
+.tableData.off {
+    visibility: collapse;
+    margin: 0;
+    height: 0;
+}
+
+.tableData td {
+
+    /*width: 93px;*/
+    /*margin: 2px;*/
+}
+
+
+.table-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 5px 0;
+}
+
+/* Hide default HTML checkbox */
+.table-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.table-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.table-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .table-slider {
+    background-color: #2196F3;
+}
+
+input:focus + .table-slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .table-slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.table-slider.round {
+    border-radius: 34px;
+}
+
+.table-slider.round:before {
+    border-radius: 50%;
+}
+
+.statisticsButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.over20 {
+    background: darkseagreen;
+    opacity: 0.5;
+    color: black;
+}
+
+.tableAjaxUpdate {
+    margin: 5px 0;
+    width: 200px;
+    background: #2e9aff;
+    color: white;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.dataUpdated {
+    color: red;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.hidden {
+    visibility: collapse;
+    margin: 0;
+    height: 0;
+}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block servList %}
+    <section class="team">
+        <div class="container">
+            <h1 class="team-header">Наша команда</h1>
+            <div class="team-row">
+                {% for person in team %}
+                    <div class="team-card" data-aos="fade-down">
+                        <img class="team-card-img" src="/assets/img/{{ person.img }}" alt="">
+                        <h3 class="team-card-title">{{ person.name }}</h3>
+                        <p>{{ person.direction }}</p>
+                        
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

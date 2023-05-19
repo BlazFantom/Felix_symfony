@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TeamRepository;
+use App\Repository\ServisesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TeamRepository::class)]
-class Team
+#[ORM\Entity(repositoryClass: ServisesRepository::class)]
+class Servises
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,13 +19,9 @@ class Team
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $direction = null;
+    private ?string $price = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $img = null;
-
-    #[ORM\ManyToMany(targetEntity: Appointment::class, mappedBy: 'doctors')]
-//    #[ORM\JoinColumn(name: "team_id", referencedColumnName: "id")]
+    #[ORM\OneToMany(mappedBy: 'servises', targetEntity: Appointment::class)]
     private Collection $appointments;
 
     public function __construct()
@@ -50,26 +46,14 @@ class Team
         return $this;
     }
 
-    public function getDirection(): ?string
+    public function getPrice(): ?string
     {
-        return $this->direction;
+        return $this->price;
     }
 
-    public function setDirection(string $direction): self
+    public function setPrice(string $price): self
     {
-        $this->direction = $direction;
-
-        return $this;
-    }
-
-    public function getImg(): ?string
-    {
-        return $this->img;
-    }
-
-    public function setImg(string $img): self
-    {
-        $this->img = $img;
+        $this->price = $price;
 
         return $this;
     }
@@ -91,7 +75,7 @@ class Team
     {
         if (!$this->appointments->contains($appointment)) {
             $this->appointments->add($appointment);
-            $appointment->addDoctor($this);
+            $appointment->setservises($this);
         }
 
         return $this;
@@ -100,15 +84,12 @@ class Team
     public function removeAppointment(Appointment $appointment): self
     {
         if ($this->appointments->removeElement($appointment)) {
-            $appointment->removeDoctor($this);
+            // set the owning side to null (unless already changed)
+            if ($appointment->getservises() === $this) {
+                $appointment->setservises(null);
+            }
         }
 
-        return $this;
-    }
-
-    public function setId(int $id): self
-    {
-        $this->id = $id;
         return $this;
     }
 }

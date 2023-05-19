@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{ encore_entry_link_tags('app') }}
+</head>
+<body>
+{{ encore_entry_link_tags('app') }}
+<div class="contentReg">
+    {#    {% set currentPath = path(app.request.attributes.get('_route') %} #}
+    {#    {{ app.session.set('lastUrl', 1) }} #}
+    <div class="containerAuth ">
+        <div class="title">
+            <h1>Registration</h1>
+        </div>
+        <div class="form">
+            <div class="form-input">
+                {{ form_start(registrationForm) }}
+
+                <label for="registration_form_username">
+                    Username
+                    {{ form_row(registrationForm.username, {'attr': {'class': 'input'}, label: ' '}) }}
+                    <label for="registration_form_plainPassword">
+                        Password
+                        {{ form_row(registrationForm.plainPassword, {label: ' ', 'attr': {'class': 'input'}}) }}
+
+
+                        {{ form_row(registrationForm.agreeTerms) }}
+
+                        <button type="submit" class="btn">Register</button>
+                        {{ form_end(registrationForm) }}
+            </div>
+        </div>
+        <div class="links">
+            <a href="{{ path('login') }}">Return to log in</a>
+            <a href="{{ path('servises') }}">Return to main page</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -3,6 +3,10 @@
 
     <section class="servises">
         <div class="container">
+
+            {% if app.request.get('congrats')|default(null) %}
+                <h1 class="congratsReg">Поздравляю с успешной регистрацией</h1>
+            {% endif %}
             <h1 class="servises-title">Услуги и цены</h1>
             <div class="servises-wrap-boxes">
 
